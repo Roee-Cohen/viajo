@@ -27,7 +27,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(145deg, #c87830 0%, #995f2f 30%, #622b14 68%, #995f2f 100%)",
+              "linear-gradient(145deg, #9dc08b 0%, #609966 30%, #40513b 68%, #609966 100%)",
             borderRadius: "2px 9px 9px 2px",
             boxShadow:
               "6px 6px 28px rgba(0,0,0,0.65), inset -5px 0 18px rgba(0,0,0,0.18), 0 0 20px rgba(var(--primary-rgb),0.18)",
@@ -126,7 +126,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
             left: -spineW,
             width: spineW + 2,
             height: "100%",
-            background: "linear-gradient(to right, #3d1a09, #622b14, #4a1f0b)",
+            background: "linear-gradient(to right, #2a3426, #40513b, #334530)",
             borderRadius: "4px 0 0 4px",
             boxShadow: `-3px 0 10px rgba(0,0,0,0.55)`,
           }}

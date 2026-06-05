@@ -8,15 +8,15 @@
      to retheme the entire site at once.
      Keep the RGB tuples in sync with the hex values above them.
      ═══════════════════════════════════════════════════════════ */
-  --palette-dark:    #622b14;       /* darkest palette color        */
-  --palette-primary: #995f2f;       /* primary accent color         */
-  --palette-mid:     #978f66;       /* muted / secondary text       */
-  --palette-light:   #e4d6a9;       /* foreground / body text       */
+  --palette-dark:    #40513b;       /* darkest palette color        */
+  --palette-primary: #609966;       /* primary accent color         */
+  --palette-mid:     #9dc08b;       /* muted / secondary text       */
+  --palette-light:   #edf1d6;       /* foreground / body text       */
   /* RGB channel helpers — mirror the hex values above */
-  --bg-rgb:          61, 26, 9;     /* derived dark bg (#3d1a09)    */
-  --card-rgb:        98, 43, 20;    /* = palette-dark (#622b14)     */
-  --primary-rgb:     153, 95, 47;   /* = palette-primary (#995f2f)  */
-  --fg-rgb:          228, 214, 169; /* = palette-light (#e4d6a9)    */
+  --bg-rgb:          42, 52, 38;    /* derived dark bg (#2a3426)    */
+  --card-rgb:        64, 81, 59;    /* = palette-dark (#40513b)     */
+  --primary-rgb:     96, 153, 102;  /* = palette-primary (#609966)  */
+  --fg-rgb:          237, 241, 214; /* = palette-light (#edf1d6)    */
 
   /* ─── Semantic tokens (derived — do not edit below) ─── */
   --background:             rgb(var(--bg-rgb));
@@ -27,7 +27,7 @@
   --popover-foreground:     var(--palette-light);
   --primary:                var(--palette-primary);
   --primary-foreground:     rgb(var(--bg-rgb));
-  --primary-dark:           #7a4a20;
+  --primary-dark:           #4d7a52;
   --secondary:              #4a1f0b;
   --secondary-foreground:   var(--palette-light);
   --muted:                  #4a1f0b;
