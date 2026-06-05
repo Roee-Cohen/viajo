@@ -52,7 +52,7 @@ export function ImageCarousel() {
       ref={ref}
       dir="rtl"
       className="relative py-20 px-6"
-      style={{ background: "linear-gradient(180deg, #06091a 0%, #080d22 100%)" }}
+      style={{ background: "linear-gradient(180deg, var(--background) 0%, rgba(var(--card-rgb),0.4) 100%)" }}
     >
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -61,7 +61,7 @@ export function ImageCarousel() {
           transition={{ duration: 0.7 }}
           className="text-center mb-10"
         >
-          <span style={{ color: "#d4a017", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
+          <span style={{ color: "var(--primary)", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
             גלריית הדרך
           </span>
           <h2
@@ -69,7 +69,7 @@ export function ImageCarousel() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)",
               fontWeight: 900,
-              color: "#f0e6d3",
+              color: "var(--foreground)",
               marginTop: 8,
             }}
           >
@@ -108,13 +108,13 @@ export function ImageCarousel() {
                   left: 0,
                   right: 0,
                   padding: "40px 28px 24px",
-                  background: "linear-gradient(to top, rgba(6,9,26,0.9) 0%, transparent 100%)",
+                  background: "linear-gradient(to top, rgba(var(--bg-rgb),0.9) 0%, transparent 100%)",
                 }}
               >
-                <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.8rem", color: "#d4a017", marginBottom: 4, letterSpacing: "1px" }}>
+                <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.8rem", color: "var(--primary)", marginBottom: 4, letterSpacing: "1px" }}>
                   📍 {IMAGES[current].location}
                 </div>
-                <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "1.2rem", fontWeight: 700, color: "#f0e6d3" }}>
+                <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--foreground)" }}>
                   {IMAGES[current].caption}
                 </div>
               </div>
@@ -137,8 +137,8 @@ export function ImageCarousel() {
                 width: 44,
                 height: 44,
                 borderRadius: "50%",
-                background: "rgba(6,9,26,0.7)",
-                border: "1px solid rgba(212,160,23,0.4)",
+                background: "rgba(var(--bg-rgb),0.7)",
+                border: "1px solid rgba(var(--primary-rgb),0.4)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -146,10 +146,10 @@ export function ImageCarousel() {
                 zIndex: 10,
                 transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(212,160,23,0.25)")}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(6,9,26,0.7)")}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(var(--primary-rgb),0.25)")}
+              onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = "rgba(var(--bg-rgb),0.7)")}
             >
-              <Icon size={20} color="#d4a017" />
+              <Icon size={20} color="var(--primary)" />
             </button>
           ))}
         </motion.div>
@@ -164,7 +164,7 @@ export function ImageCarousel() {
                 width: i === current ? 24 : 8,
                 height: 8,
                 borderRadius: 4,
-                background: i === current ? "#d4a017" : "rgba(212,160,23,0.3)",
+                background: i === current ? "var(--primary)" : "rgba(var(--primary-rgb),0.3)",
                 border: "none",
                 cursor: "pointer",
                 transition: "width 0.3s, background 0.3s",

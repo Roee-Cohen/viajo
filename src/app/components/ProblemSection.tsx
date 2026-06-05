@@ -19,11 +19,11 @@ export function ProblemSection() {
       dir="rtl"
       className="relative py-24 px-6"
       style={{
-        background: "linear-gradient(180deg, #06091a 0%, #080d22 50%, #06091a 100%)",
+        background: "linear-gradient(180deg, var(--background) 0%, rgba(var(--card-rgb),0.4) 50%, var(--background) 100%)",
       }}
     >
       {/* Decorative top border */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
 
       <div className="max-w-5xl mx-auto">
         {/* Section label */}
@@ -35,7 +35,7 @@ export function ProblemSection() {
         >
           <span
             style={{
-              color: "#d4a017",
+              color: "var(--primary)",
               letterSpacing: "3px",
               fontSize: "11px",
               fontFamily: "'Heebo', sans-serif",
@@ -57,13 +57,13 @@ export function ProblemSection() {
             fontFamily: "'Frank Ruhl Libre', serif",
             fontSize: "clamp(1.8rem, 4vw, 3rem)",
             fontWeight: 900,
-            color: "#f0e6d3",
+            color: "var(--foreground)",
             lineHeight: 1.3,
           }}
         >
           אתה מתכנן נסיעה של חיים.
           <br />
-          <span style={{ color: "#d4a017" }}>מה יישאר ממנה בעוד 10 שנים?</span>
+          <span style={{ color: "var(--primary)" }}>מה יישאר ממנה בעוד 10 שנים?</span>
         </motion.h2>
 
         {/* Story text */}
@@ -77,7 +77,7 @@ export function ProblemSection() {
             style={{
               fontFamily: "'Heebo', sans-serif",
               fontSize: "1.1rem",
-              color: "rgba(240,230,211,0.72)",
+              color: "rgba(var(--fg-rgb),0.72)",
               lineHeight: 1.9,
               textAlign: "center",
             }}
@@ -97,8 +97,8 @@ export function ProblemSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.3 + i * 0.15 }}
               style={{
-                background: "rgba(14,24,48,0.7)",
-                border: "1px solid rgba(212,160,23,0.2)",
+                background: "rgba(var(--card-rgb),0.7)",
+                border: "1px solid rgba(var(--primary-rgb),0.2)",
                 borderRadius: "12px",
                 padding: "28px 24px",
                 textAlign: "center",
@@ -107,14 +107,14 @@ export function ProblemSection() {
             >
               <stat.icon
                 size={32}
-                style={{ color: "#d4a017", margin: "0 auto 16px" }}
+                style={{ color: "var(--primary)", margin: "0 auto 16px" }}
               />
               <div
                 style={{
                   fontFamily: "'Frank Ruhl Libre', serif",
                   fontSize: "2.5rem",
                   fontWeight: 900,
-                  color: "#d4a017",
+                  color: "var(--primary)",
                   marginBottom: "8px",
                 }}
               >
@@ -124,7 +124,7 @@ export function ProblemSection() {
                 style={{
                   fontFamily: "'Heebo', sans-serif",
                   fontSize: "0.9rem",
-                  color: "rgba(240,230,211,0.65)",
+                  color: "rgba(var(--fg-rgb),0.65)",
                   lineHeight: 1.6,
                 }}
               >
@@ -140,21 +140,21 @@ export function ProblemSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
           style={{
-            background: "rgba(14,24,48,0.5)",
-            border: "1px solid rgba(212,160,23,0.15)",
+            background: "rgba(var(--card-rgb),0.5)",
+            border: "1px solid rgba(var(--primary-rgb),0.15)",
             borderRadius: "16px",
             padding: "36px",
           }}
         >
           <div className="flex items-start gap-4">
-            <AlertTriangle size={28} style={{ color: "#d4a017", flexShrink: 0, marginTop: 4 }} />
+            <AlertTriangle size={28} style={{ color: "var(--primary)", flexShrink: 0, marginTop: 4 }} />
             <div>
               <h3
                 style={{
                   fontFamily: "'Frank Ruhl Libre', serif",
                   fontSize: "1.4rem",
                   fontWeight: 700,
-                  color: "#f0e6d3",
+                  color: "var(--foreground)",
                   marginBottom: "12px",
                 }}
               >
@@ -172,7 +172,7 @@ export function ProblemSection() {
                         width: 6,
                         height: 6,
                         borderRadius: "50%",
-                        background: "#d4a017",
+                        background: "var(--primary)",
                         marginTop: 9,
                         flexShrink: 0,
                       }}
@@ -181,7 +181,7 @@ export function ProblemSection() {
                       style={{
                         fontFamily: "'Heebo', sans-serif",
                         fontSize: "0.95rem",
-                        color: "rgba(240,230,211,0.72)",
+                        color: "rgba(var(--fg-rgb),0.72)",
                         lineHeight: 1.7,
                       }}
                     >
@@ -195,7 +195,7 @@ export function ProblemSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
     </section>
   );
 }

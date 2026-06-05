@@ -80,6 +80,11 @@ export function GlobeCanvas({ className }: { className?: string }) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Read city-dot color from CSS palette variable so it updates with the theme
+    const cssVars = getComputedStyle(document.documentElement);
+    const primaryColor = cssVars.getPropertyValue("--palette-primary").trim() || "#995f2f";
+    const primaryRgb = cssVars.getPropertyValue("--primary-rgb").trim() || "153, 95, 47";
+
     const W = canvas.width;
     const H = canvas.height;
     const cx = W / 2;
@@ -175,11 +180,11 @@ export function GlobeCanvas({ className }: { className?: string }) {
         if (p.vis) {
           ctx!.beginPath();
           ctx!.arc(p.sx, p.sy, 2.5, 0, Math.PI * 2);
-          ctx!.fillStyle = "#d4a017";
+          ctx!.fillStyle = primaryColor;
           ctx!.fill();
           ctx!.beginPath();
           ctx!.arc(p.sx, p.sy, 4.5, 0, Math.PI * 2);
-          ctx!.strokeStyle = "rgba(212, 160, 23, 0.4)";
+          ctx!.strokeStyle = `rgba(${primaryRgb}, 0.4)`;
           ctx!.lineWidth = 1;
           ctx!.stroke();
         }

@@ -17,7 +17,7 @@ export function HeroSection() {
       id="hero"
       dir="rtl"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #06091a 0%, #0a0f2e 50%, #06091a 100%)" }}
+      style={{ background: "linear-gradient(180deg, var(--background) 0%, rgba(var(--card-rgb),0.5) 50%, var(--background) 100%)" }}
     >
       {/* Stars */}
       <Stars />
@@ -55,7 +55,7 @@ export function HeroSection() {
               <motion.path
                 d="M 380 120 Q 450 80 420 200 Q 390 300 300 340"
                 fill="none"
-                stroke="rgba(212,160,23,0.25)"
+                stroke="rgba(var(--primary-rgb),0.25)"
                 strokeWidth="1.5"
                 strokeDasharray="6 4"
                 initial={{ pathLength: 0 }}
@@ -65,7 +65,7 @@ export function HeroSection() {
               <motion.path
                 d="M 150 200 Q 80 280 160 360 Q 240 440 340 400"
                 fill="none"
-                stroke="rgba(212,160,23,0.18)"
+                stroke="rgba(var(--primary-rgb),0.18)"
                 strokeWidth="1"
                 strokeDasharray="4 6"
                 initial={{ pathLength: 0 }}
@@ -82,17 +82,17 @@ export function HeroSection() {
         style={{ y: textY, opacity }}
         className="relative z-10 text-center px-6 max-w-3xl mx-auto"
       >
-        {/* Gold label */}
+        {/* Primary label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
           className="inline-flex items-center gap-2 mb-6"
         >
-          <div className="w-8 h-px bg-gradient-to-l from-[#d4a017] to-transparent" />
+          <div className="w-8 h-px" style={{ background: "linear-gradient(to left, var(--primary), transparent)" }} />
           <span
             style={{
-              color: "#d4a017",
+              color: "var(--primary)",
               letterSpacing: "3px",
               fontSize: "12px",
               fontFamily: "'Heebo', sans-serif",
@@ -101,7 +101,7 @@ export function HeroSection() {
           >
             VIAJO — שמור את הנסיעה שלך
           </span>
-          <div className="w-8 h-px bg-gradient-to-r from-[#d4a017] to-transparent" />
+          <div className="w-8 h-px" style={{ background: "linear-gradient(to right, var(--primary), transparent)" }} />
         </motion.div>
 
         {/* Main headline */}
@@ -114,14 +114,14 @@ export function HeroSection() {
             fontSize: "clamp(2.2rem, 6vw, 4.5rem)",
             fontWeight: 900,
             lineHeight: 1.2,
-            color: "#f0e6d3",
+            color: "var(--foreground)",
             textShadow: "0 4px 30px rgba(0,0,0,0.5)",
             marginBottom: "1.2rem",
           }}
         >
           הרגעים הכי יפים שלך
           <br />
-          <span style={{ color: "#d4a017" }}>עוד לא נשמרו לנצח</span>
+          <span style={{ color: "var(--primary)" }}>עוד לא נשמרו לנצח</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -132,7 +132,7 @@ export function HeroSection() {
           style={{
             fontFamily: "'Heebo', sans-serif",
             fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
-            color: "rgba(240,230,211,0.75)",
+            color: "rgba(var(--fg-rgb),0.75)",
             lineHeight: 1.7,
             maxWidth: "560px",
             margin: "0 auto 2.5rem",
@@ -153,8 +153,8 @@ export function HeroSection() {
           <a
             href="#checkout"
             style={{
-              background: "linear-gradient(135deg, #d4a017, #b88010)",
-              color: "#06091a",
+              background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
+              color: "var(--primary-foreground)",
               padding: "14px 36px",
               borderRadius: "6px",
               fontFamily: "'Heebo', sans-serif",
@@ -162,17 +162,17 @@ export function HeroSection() {
               fontSize: "1rem",
               letterSpacing: "0.5px",
               textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(212,160,23,0.35)",
+              boxShadow: "0 4px 20px rgba(var(--primary-rgb),0.35)",
               transition: "transform 0.2s, box-shadow 0.2s",
               display: "inline-block",
             }}
             onMouseEnter={(e) => {
               (e.target as HTMLElement).style.transform = "translateY(-2px)";
-              (e.target as HTMLElement).style.boxShadow = "0 8px 30px rgba(212,160,23,0.5)";
+              (e.target as HTMLElement).style.boxShadow = "0 8px 30px rgba(var(--primary-rgb),0.5)";
             }}
             onMouseLeave={(e) => {
               (e.target as HTMLElement).style.transform = "";
-              (e.target as HTMLElement).style.boxShadow = "0 4px 20px rgba(212,160,23,0.35)";
+              (e.target as HTMLElement).style.boxShadow = "0 4px 20px rgba(var(--primary-rgb),0.35)";
             }}
           >
             בנה את הספר שלך עכשיו
@@ -180,24 +180,24 @@ export function HeroSection() {
           <a
             href="#problem"
             style={{
-              color: "#f0e6d3",
+              color: "var(--foreground)",
               padding: "14px 30px",
               borderRadius: "6px",
               fontFamily: "'Heebo', sans-serif",
               fontWeight: 500,
               fontSize: "1rem",
               textDecoration: "none",
-              border: "1px solid rgba(240,230,211,0.25)",
+              border: "1px solid rgba(var(--fg-rgb),0.25)",
               transition: "border-color 0.2s, color 0.2s",
               display: "inline-block",
             }}
             onMouseEnter={(e) => {
-              (e.target as HTMLElement).style.borderColor = "#d4a017";
-              (e.target as HTMLElement).style.color = "#d4a017";
+              (e.target as HTMLElement).style.borderColor = "var(--primary)";
+              (e.target as HTMLElement).style.color = "var(--primary)";
             }}
             onMouseLeave={(e) => {
-              (e.target as HTMLElement).style.borderColor = "rgba(240,230,211,0.25)";
-              (e.target as HTMLElement).style.color = "#f0e6d3";
+              (e.target as HTMLElement).style.borderColor = "rgba(var(--fg-rgb),0.25)";
+              (e.target as HTMLElement).style.color = "var(--foreground)";
             }}
           >
             קרא את הסיפור שלנו
@@ -212,7 +212,7 @@ export function HeroSection() {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         style={{ opacity: 0.5 }}
       >
-        <ChevronDown size={28} color="#d4a017" />
+        <ChevronDown size={28} color="var(--primary)" />
       </motion.div>
     </section>
   );

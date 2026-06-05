@@ -31,9 +31,9 @@ export function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled ? "rgba(6,9,26,0.95)" : "transparent",
+        background: scrolled ? "rgba(var(--bg-rgb),0.95)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(212,160,23,0.15)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(var(--primary-rgb),0.15)" : "none",
         transition: "background 0.3s, backdrop-filter 0.3s, border-bottom 0.3s",
       }}
     >
@@ -59,7 +59,7 @@ export function Navbar() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "1.4rem",
               fontWeight: 900,
-              color: "#d4a017",
+              color: "var(--primary)",
               letterSpacing: "2px",
             }}
           >
@@ -76,18 +76,18 @@ export function Navbar() {
               style={{
                 fontFamily: "'Heebo', sans-serif",
                 fontSize: "0.9rem",
-                color: "rgba(240,230,211,0.7)",
+                color: "rgba(var(--fg-rgb),0.7)",
                 textDecoration: "none",
                 padding: "8px 14px",
                 borderRadius: "6px",
                 transition: "color 0.2s, background 0.2s",
               }}
               onMouseEnter={(e) => {
-                (e.target as HTMLElement).style.color = "#f0e6d3";
-                (e.target as HTMLElement).style.background = "rgba(212,160,23,0.1)";
+                (e.target as HTMLElement).style.color = "var(--foreground)";
+                (e.target as HTMLElement).style.background = "rgba(var(--primary-rgb),0.1)";
               }}
               onMouseLeave={(e) => {
-                (e.target as HTMLElement).style.color = "rgba(240,230,211,0.7)";
+                (e.target as HTMLElement).style.color = "rgba(var(--fg-rgb),0.7)";
                 (e.target as HTMLElement).style.background = "transparent";
               }}
             >
@@ -100,11 +100,11 @@ export function Navbar() {
               fontFamily: "'Heebo', sans-serif",
               fontSize: "0.9rem",
               fontWeight: 700,
-              color: "#06091a",
+              color: "var(--primary-foreground)",
               textDecoration: "none",
               padding: "9px 22px",
               borderRadius: "6px",
-              background: "linear-gradient(135deg, #d4a017, #b88010)",
+              background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
               marginRight: 8,
               transition: "opacity 0.2s, transform 0.2s",
             }}
@@ -119,7 +119,7 @@ export function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: "none", border: "none", cursor: "pointer", color: "#f0e6d3" }}
+          style={{ background: "none", border: "none", cursor: "pointer", color: "var(--foreground)" }}
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -133,8 +133,8 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             style={{
-              background: "rgba(6,9,26,0.98)",
-              borderTop: "1px solid rgba(212,160,23,0.15)",
+              background: "rgba(var(--bg-rgb),0.98)",
+              borderTop: "1px solid rgba(var(--primary-rgb),0.15)",
               overflow: "hidden",
             }}
             dir="rtl"
@@ -148,10 +148,10 @@ export function Navbar() {
                   style={{
                     fontFamily: "'Heebo', sans-serif",
                     fontSize: "1rem",
-                    color: link.href === "#checkout" ? "#d4a017" : "rgba(240,230,211,0.8)",
+                    color: link.href === "#checkout" ? "var(--primary)" : "rgba(var(--fg-rgb),0.8)",
                     textDecoration: "none",
                     padding: "12px 0",
-                    borderBottom: "1px solid rgba(212,160,23,0.08)",
+                    borderBottom: "1px solid rgba(var(--primary-rgb),0.08)",
                     fontWeight: link.href === "#checkout" ? 700 : 400,
                   }}
                 >

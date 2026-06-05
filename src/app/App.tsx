@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div
       style={{
-        background: "#06091a",
+        background: "var(--background)",
         minHeight: "100vh",
         fontFamily: "'Heebo', sans-serif",
         overflowX: "hidden",

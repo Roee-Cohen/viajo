@@ -8,8 +8,6 @@ const PLANS = [
     id: "basic",
     name: "VIAJO בסיסי",
     price: 129,
-    color: "#1a2e50",
-    borderColor: "rgba(212,160,23,0.25)",
     badge: null,
     features: [
       "ספר VIAJO קלאסי (A5, 200 עמוד)",
@@ -24,8 +22,6 @@ const PLANS = [
     id: "premium",
     name: "VIAJO פרמיום",
     price: 209,
-    color: "linear-gradient(145deg, #1a2e50, #0e1830)",
-    borderColor: "#d4a017",
     badge: "הפופולרי ביותר",
     features: [
       "כל מה שב-VIAJO בסיסי",
@@ -40,8 +36,6 @@ const PLANS = [
     id: "ultimate",
     name: "VIAJO אולטימייט",
     price: 349,
-    color: "#1a2e50",
-    borderColor: "rgba(212,160,23,0.25)",
     badge: null,
     features: [
       "כל מה שב-VIAJO פרמיום",
@@ -90,9 +84,9 @@ export function CheckoutSection() {
       ref={ref}
       dir="rtl"
       className="relative py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #080d22 0%, #06091a 100%)" }}
+      style={{ background: "linear-gradient(180deg, rgba(var(--card-rgb),0.4) 0%, var(--background) 100%)" }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
 
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -102,7 +96,7 @@ export function CheckoutSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <span style={{ color: "#d4a017", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
+          <span style={{ color: "var(--primary)", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
             הזמן עכשיו
           </span>
           <h2
@@ -110,13 +104,13 @@ export function CheckoutSection() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "clamp(1.8rem, 4vw, 3rem)",
               fontWeight: 900,
-              color: "#f0e6d3",
+              color: "var(--foreground)",
               marginTop: 8,
             }}
           >
             בחר את ה-VIAJO שלך
           </h2>
-          <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1rem", color: "rgba(240,230,211,0.6)", marginTop: 8 }}>
+          <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1rem", color: "rgba(var(--fg-rgb),0.6)", marginTop: 8 }}>
             משלוח חינם לכל ישראל • אחריות 30 יום • תשלום מאובטח
           </p>
         </motion.div>
@@ -142,9 +136,9 @@ export function CheckoutSection() {
                     style={{
                       position: "relative",
                       background: selectedPlan === p.id
-                        ? "rgba(14,24,48,0.95)"
-                        : "rgba(14,24,48,0.55)",
-                      border: `2px solid ${selectedPlan === p.id ? "#d4a017" : "rgba(212,160,23,0.18)"}`,
+                        ? "rgba(var(--card-rgb),0.95)"
+                        : "rgba(var(--card-rgb),0.55)",
+                      border: `2px solid ${selectedPlan === p.id ? "var(--primary)" : "rgba(var(--primary-rgb),0.18)"}`,
                       borderRadius: "14px",
                       padding: "28px 24px",
                       cursor: "pointer",
@@ -159,8 +153,8 @@ export function CheckoutSection() {
                           top: -14,
                           left: "50%",
                           transform: "translateX(-50%)",
-                          background: "linear-gradient(135deg, #d4a017, #b88010)",
-                          color: "#06091a",
+                          background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
+                          color: "var(--primary-foreground)",
                           fontFamily: "'Heebo', sans-serif",
                           fontSize: "0.75rem",
                           fontWeight: 700,
@@ -182,7 +176,7 @@ export function CheckoutSection() {
                       style={{
                         fontFamily: "'Frank Ruhl Libre', serif",
                         fontWeight: 800,
-                        color: "#f0e6d3",
+                        color: "var(--foreground)",
                         fontSize: "1.1rem",
                         textAlign: "center",
                         marginBottom: 6,
@@ -192,7 +186,7 @@ export function CheckoutSection() {
                     </h3>
 
                     <div className="text-center mb-6">
-                      <span style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "2.4rem", fontWeight: 900, color: "#d4a017" }}>
+                      <span style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "2.4rem", fontWeight: 900, color: "var(--primary)" }}>
                         ₪{p.price}
                       </span>
                     </div>
@@ -200,8 +194,8 @@ export function CheckoutSection() {
                     <ul style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                       {p.features.map((f, fi) => (
                         <li key={fi} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-                          <Check size={14} style={{ color: "#d4a017", marginTop: 4, flexShrink: 0 }} />
-                          <span style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.85rem", color: "rgba(240,230,211,0.72)", lineHeight: 1.5 }}>
+                          <Check size={14} style={{ color: "var(--primary)", marginTop: 4, flexShrink: 0 }} />
+                          <span style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.85rem", color: "rgba(var(--fg-rgb),0.72)", lineHeight: 1.5 }}>
                             {f}
                           </span>
                         </li>
@@ -217,13 +211,13 @@ export function CheckoutSection() {
                           width: 22,
                           height: 22,
                           borderRadius: "50%",
-                          background: "#d4a017",
+                          background: "var(--primary)",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
                         }}
                       >
-                        <Check size={12} color="#06091a" />
+                        <Check size={12} color="var(--primary-foreground)" />
                       </div>
                     )}
                   </motion.div>
@@ -235,8 +229,8 @@ export function CheckoutSection() {
                 <button
                   onClick={() => setStep("form")}
                   style={{
-                    background: "linear-gradient(135deg, #d4a017, #b88010)",
-                    color: "#06091a",
+                    background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
+                    color: "var(--primary-foreground)",
                     padding: "16px 48px",
                     borderRadius: "8px",
                     fontFamily: "'Heebo', sans-serif",
@@ -244,7 +238,7 @@ export function CheckoutSection() {
                     fontSize: "1.05rem",
                     border: "none",
                     cursor: "pointer",
-                    boxShadow: "0 6px 25px rgba(212,160,23,0.4)",
+                    boxShadow: "0 6px 25px rgba(var(--primary-rgb),0.4)",
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 8,
@@ -252,11 +246,11 @@ export function CheckoutSection() {
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 35px rgba(212,160,23,0.55)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 35px rgba(var(--primary-rgb),0.55)";
                   }}
                   onMouseLeave={(e) => {
                     (e.currentTarget as HTMLElement).style.transform = "";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 25px rgba(212,160,23,0.4)";
+                    (e.currentTarget as HTMLElement).style.boxShadow = "0 6px 25px rgba(var(--primary-rgb),0.4)";
                   }}
                 >
                   <ShoppingCart size={18} />
@@ -270,8 +264,8 @@ export function CheckoutSection() {
                     { Icon: Truck, text: "משלוח עד 10 ימים" },
                     { Icon: Zap, text: "אחריות 30 יום" },
                   ].map(({ Icon, text }, i) => (
-                    <div key={i} className="flex items-center gap-2" style={{ color: "rgba(240,230,211,0.45)", fontFamily: "'Heebo', sans-serif", fontSize: "0.8rem" }}>
-                      <Icon size={14} color="#d4a017" />
+                    <div key={i} className="flex items-center gap-2" style={{ color: "rgba(var(--fg-rgb),0.45)", fontFamily: "'Heebo', sans-serif", fontSize: "0.8rem" }}>
+                      <Icon size={14} color="var(--primary)" />
                       {text}
                     </div>
                   ))}
@@ -292,8 +286,8 @@ export function CheckoutSection() {
               {/* Order summary */}
               <div
                 style={{
-                  background: "rgba(212,160,23,0.1)",
-                  border: "1px solid rgba(212,160,23,0.3)",
+                  background: "rgba(var(--primary-rgb),0.1)",
+                  border: "1px solid rgba(var(--primary-rgb),0.3)",
                   borderRadius: "10px",
                   padding: "16px 20px",
                   marginBottom: 24,
@@ -303,17 +297,17 @@ export function CheckoutSection() {
                 }}
               >
                 <div>
-                  <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "#f0e6d3", fontSize: "1rem" }}>
+                  <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "var(--foreground)", fontSize: "1rem" }}>
                     {plan.name}
                   </div>
                   <button
                     onClick={() => setStep("plans")}
-                    style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.82rem", color: "#d4a017", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                    style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.82rem", color: "var(--primary)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
                   >
                     שנה תכנית
                   </button>
                 </div>
-                <span style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "1.5rem", fontWeight: 900, color: "#d4a017" }}>
+                <span style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "1.5rem", fontWeight: 900, color: "var(--primary)" }}>
                   ₪{plan.price}
                 </span>
               </div>
@@ -327,7 +321,7 @@ export function CheckoutSection() {
                   { label: "עיר *", key: "city", type: "text", placeholder: "תל אביב" },
                 ].map((field) => (
                   <div key={field.key}>
-                    <label style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(240,230,211,0.7)", display: "block", marginBottom: 6 }}>
+                    <label style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(var(--fg-rgb),0.7)", display: "block", marginBottom: 6 }}>
                       {field.label}
                     </label>
                     <input
@@ -338,25 +332,25 @@ export function CheckoutSection() {
                       onChange={(e) => setFormData((p) => ({ ...p, [field.key]: e.target.value }))}
                       style={{
                         width: "100%",
-                        background: "rgba(14,24,48,0.8)",
-                        border: "1px solid rgba(212,160,23,0.25)",
+                        background: "rgba(var(--card-rgb),0.8)",
+                        border: "1px solid rgba(var(--primary-rgb),0.25)",
                         borderRadius: "8px",
                         padding: "12px 16px",
-                        color: "#f0e6d3",
+                        color: "var(--foreground)",
                         fontFamily: "'Heebo', sans-serif",
                         fontSize: "0.95rem",
                         outline: "none",
                         transition: "border-color 0.2s",
                         boxSizing: "border-box",
                       }}
-                      onFocus={(e) => (e.target.style.borderColor = "#d4a017")}
-                      onBlur={(e) => (e.target.style.borderColor = "rgba(212,160,23,0.25)")}
+                      onFocus={(e) => (e.target.style.borderColor = "var(--primary)")}
+                      onBlur={(e) => (e.target.style.borderColor = "rgba(var(--primary-rgb),0.25)")}
                     />
                   </div>
                 ))}
 
                 <div>
-                  <label style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(240,230,211,0.7)", display: "block", marginBottom: 6 }}>
+                  <label style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(var(--fg-rgb),0.7)", display: "block", marginBottom: 6 }}>
                     התאמה אישית (אופציונלי)
                   </label>
                   <textarea
@@ -366,11 +360,11 @@ export function CheckoutSection() {
                     rows={3}
                     style={{
                       width: "100%",
-                      background: "rgba(14,24,48,0.8)",
-                      border: "1px solid rgba(212,160,23,0.25)",
+                      background: "rgba(var(--card-rgb),0.8)",
+                      border: "1px solid rgba(var(--primary-rgb),0.25)",
                       borderRadius: "8px",
                       padding: "12px 16px",
-                      color: "#f0e6d3",
+                      color: "var(--foreground)",
                       fontFamily: "'Heebo', sans-serif",
                       fontSize: "0.95rem",
                       outline: "none",
@@ -378,8 +372,8 @@ export function CheckoutSection() {
                       boxSizing: "border-box",
                       transition: "border-color 0.2s",
                     }}
-                    onFocus={(e) => (e.target.style.borderColor = "#d4a017")}
-                    onBlur={(e) => (e.target.style.borderColor = "rgba(212,160,23,0.25)")}
+                    onFocus={(e) => (e.target.style.borderColor = "var(--primary)")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(var(--primary-rgb),0.25)")}
                   />
                 </div>
 
@@ -387,8 +381,10 @@ export function CheckoutSection() {
                   type="submit"
                   disabled={submitting}
                   style={{
-                    background: submitting ? "rgba(212,160,23,0.5)" : "linear-gradient(135deg, #d4a017, #b88010)",
-                    color: "#06091a",
+                    background: submitting
+                      ? "rgba(var(--primary-rgb),0.5)"
+                      : "linear-gradient(135deg, var(--primary), var(--primary-dark))",
+                    color: "var(--primary-foreground)",
                     padding: "16px",
                     borderRadius: "8px",
                     fontFamily: "'Heebo', sans-serif",
@@ -396,7 +392,7 @@ export function CheckoutSection() {
                     fontSize: "1.05rem",
                     border: "none",
                     cursor: submitting ? "not-allowed" : "pointer",
-                    boxShadow: "0 4px 20px rgba(212,160,23,0.35)",
+                    boxShadow: "0 4px 20px rgba(var(--primary-rgb),0.35)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -408,7 +404,7 @@ export function CheckoutSection() {
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      style={{ width: 20, height: 20, border: "2px solid #06091a", borderTopColor: "transparent", borderRadius: "50%" }}
+                      style={{ width: 20, height: 20, border: "2px solid var(--primary-foreground)", borderTopColor: "transparent", borderRadius: "50%" }}
                     />
                   ) : (
                     <>
@@ -417,7 +413,7 @@ export function CheckoutSection() {
                   )}
                 </button>
 
-                <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.78rem", color: "rgba(240,230,211,0.4)", textAlign: "center" }}>
+                <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.78rem", color: "rgba(var(--fg-rgb),0.4)", textAlign: "center" }}>
                   🔒 תשלום מאובטח. פרטי הכרטיס שלך מוצפנים ומאובטחים.
                 </p>
               </form>
@@ -441,8 +437,8 @@ export function CheckoutSection() {
                   width: 80,
                   height: 80,
                   borderRadius: "50%",
-                  background: "rgba(212,160,23,0.15)",
-                  border: "2px solid #d4a017",
+                  background: "rgba(var(--primary-rgb),0.15)",
+                  border: "2px solid var(--primary)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -458,23 +454,23 @@ export function CheckoutSection() {
                   fontFamily: "'Frank Ruhl Libre', serif",
                   fontSize: "2rem",
                   fontWeight: 900,
-                  color: "#f0e6d3",
+                  color: "var(--foreground)",
                   marginBottom: 12,
                 }}
               >
                 ההזמנה אושרה! 🎉
               </h2>
 
-              <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1rem", color: "rgba(240,230,211,0.65)", lineHeight: 1.7, marginBottom: 24 }}>
+              <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1rem", color: "rgba(var(--fg-rgb),0.65)", lineHeight: 1.7, marginBottom: 24 }}>
                 תודה {formData.name}! ה-VIAJO שלך בדרך אליך.
-                שלחנו לך אישור למייל <strong style={{ color: "#d4a017" }}>{formData.email}</strong>.
+                שלחנו לך אישור למייל <strong style={{ color: "var(--primary)" }}>{formData.email}</strong>.
                 <br />
                 תיהנה מהנסיעה. אנחנו נדאג לשמור אותה לנצח. ✨
               </p>
 
-              <div style={{ display: "inline-flex", gap: 6, padding: "8px 20px", background: "rgba(212,160,23,0.1)", borderRadius: 20, border: "1px solid rgba(212,160,23,0.3)" }}>
-                <Star size={14} fill="#d4a017" color="#d4a017" />
-                <span style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.85rem", color: "#d4a017" }}>
+              <div style={{ display: "inline-flex", gap: 6, padding: "8px 20px", background: "rgba(var(--primary-rgb),0.1)", borderRadius: 20, border: "1px solid rgba(var(--primary-rgb),0.3)" }}>
+                <Star size={14} fill="var(--primary)" color="var(--primary)" />
+                <span style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.85rem", color: "var(--primary)" }}>
                   {plan.name} — ₪{plan.price}
                 </span>
               </div>

@@ -63,7 +63,7 @@ function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <Star key={i} size={14} fill="#d4a017" color="#d4a017" />
+        <Star key={i} size={14} fill="var(--primary)" color="var(--primary)" />
       ))}
     </div>
   );
@@ -103,9 +103,9 @@ export function TestimonialsSection() {
       ref={ref}
       dir="rtl"
       className="relative py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #080d22 0%, #06091a 100%)" }}
+      style={{ background: "linear-gradient(180deg, rgba(var(--card-rgb),0.4) 0%, var(--background) 100%)" }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
 
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -115,7 +115,7 @@ export function TestimonialsSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span style={{ color: "#d4a017", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
+          <span style={{ color: "var(--primary)", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
             מה אומרים המטיילים
           </span>
           <h2
@@ -123,7 +123,7 @@ export function TestimonialsSection() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)",
               fontWeight: 900,
-              color: "#f0e6d3",
+              color: "var(--foreground)",
               marginTop: 8,
             }}
           >
@@ -158,8 +158,8 @@ export function TestimonialsSection() {
                 exit="exit"
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 style={{
-                  background: "rgba(14,24,48,0.8)",
-                  border: "1px solid rgba(212,160,23,0.2)",
+                  background: "rgba(var(--card-rgb),0.8)",
+                  border: "1px solid rgba(var(--primary-rgb),0.2)",
                   borderRadius: "16px",
                   padding: "36px 40px",
                   backdropFilter: "blur(12px)",
@@ -171,7 +171,7 @@ export function TestimonialsSection() {
                     fontFamily: "Georgia, serif",
                     fontSize: "80px",
                     lineHeight: 1,
-                    color: "rgba(212,160,23,0.2)",
+                    color: "rgba(var(--primary-rgb),0.2)",
                     marginBottom: -20,
                     direction: "ltr",
                   }}
@@ -183,7 +183,7 @@ export function TestimonialsSection() {
                   style={{
                     fontFamily: "'Heebo', sans-serif",
                     fontSize: "1.08rem",
-                    color: "rgba(240,230,211,0.85)",
+                    color: "rgba(var(--fg-rgb),0.85)",
                     lineHeight: 1.85,
                     marginBottom: 28,
                   }}
@@ -212,10 +212,10 @@ export function TestimonialsSection() {
                     {t.avatar}
                   </div>
                   <div>
-                    <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "#f0e6d3", fontSize: "1rem" }}>
+                    <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "var(--foreground)", fontSize: "1rem" }}>
                       {t.name}
                     </div>
-                    <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.82rem", color: "rgba(240,230,211,0.55)", marginTop: 2 }}>
+                    <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.82rem", color: "rgba(var(--fg-rgb),0.55)", marginTop: 2 }}>
                       {t.country}
                     </div>
                     <div style={{ marginTop: 4 }}>
@@ -226,12 +226,12 @@ export function TestimonialsSection() {
                     style={{
                       marginRight: "auto",
                       padding: "4px 12px",
-                      background: "rgba(212,160,23,0.12)",
-                      border: "1px solid rgba(212,160,23,0.25)",
+                      background: "rgba(var(--primary-rgb),0.12)",
+                      border: "1px solid rgba(var(--primary-rgb),0.25)",
                       borderRadius: "20px",
                       fontFamily: "'Heebo', sans-serif",
                       fontSize: "0.78rem",
-                      color: "#d4a017",
+                      color: "var(--primary)",
                     }}
                   >
                     ✈ {t.trip}
@@ -247,13 +247,13 @@ export function TestimonialsSection() {
               onClick={() => go(-1)}
               style={{
                 width: 40, height: 40, borderRadius: "50%",
-                background: "rgba(14,24,48,0.8)",
-                border: "1px solid rgba(212,160,23,0.3)",
+                background: "rgba(var(--card-rgb),0.8)",
+                border: "1px solid rgba(var(--primary-rgb),0.3)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 cursor: "pointer",
               }}
             >
-              <ChevronRight size={18} color="#d4a017" />
+              <ChevronRight size={18} color="var(--primary)" />
             </button>
 
             {/* Dots */}
@@ -266,7 +266,7 @@ export function TestimonialsSection() {
                     width: i === current ? 24 : 8,
                     height: 8,
                     borderRadius: 4,
-                    background: i === current ? "#d4a017" : "rgba(212,160,23,0.3)",
+                    background: i === current ? "var(--primary)" : "rgba(var(--primary-rgb),0.3)",
                     border: "none",
                     cursor: "pointer",
                     transition: "width 0.3s",
@@ -279,13 +279,13 @@ export function TestimonialsSection() {
               onClick={() => go(1)}
               style={{
                 width: 40, height: 40, borderRadius: "50%",
-                background: "rgba(14,24,48,0.8)",
-                border: "1px solid rgba(212,160,23,0.3)",
+                background: "rgba(var(--card-rgb),0.8)",
+                border: "1px solid rgba(var(--primary-rgb),0.3)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 cursor: "pointer",
               }}
             >
-              <ChevronLeft size={18} color="#d4a017" />
+              <ChevronLeft size={18} color="var(--primary)" />
             </button>
           </div>
         </motion.div>
@@ -302,10 +302,10 @@ export function TestimonialsSection() {
             { emoji: "🌍", label: "נשלח ל-40+ מדינות", sub: "ברחבי העולם" },
             { emoji: "✈", label: "5,000+ מטיילים", sub: "בחרו VIAJO" },
           ].map((b, i) => (
-            <div key={i} className="flex items-center gap-3" style={{ color: "rgba(240,230,211,0.65)" }}>
+            <div key={i} className="flex items-center gap-3" style={{ color: "rgba(var(--fg-rgb),0.65)" }}>
               <span style={{ fontSize: "1.5rem" }}>{b.emoji}</span>
               <div>
-                <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "#f0e6d3", fontSize: "0.95rem" }}>{b.label}</div>
+                <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "var(--foreground)", fontSize: "0.95rem" }}>{b.label}</div>
                 <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.8rem" }}>{b.sub}</div>
               </div>
             </div>
@@ -313,7 +313,7 @@ export function TestimonialsSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
     </section>
   );
 }

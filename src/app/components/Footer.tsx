@@ -3,8 +3,8 @@ export function Footer() {
     <footer
       dir="rtl"
       style={{
-        background: "#04060f",
-        borderTop: "1px solid rgba(212,160,23,0.12)",
+        background: "var(--background)",
+        borderTop: "1px solid rgba(var(--primary-rgb),0.12)",
         padding: "40px 24px",
         textAlign: "center",
       }}
@@ -18,7 +18,7 @@ export function Footer() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "1.6rem",
               fontWeight: 900,
-              color: "#d4a017",
+              color: "var(--primary)",
               letterSpacing: "3px",
             }}
           >
@@ -30,7 +30,7 @@ export function Footer() {
           style={{
             fontFamily: "'Heebo', sans-serif",
             fontSize: "0.88rem",
-            color: "rgba(240,230,211,0.38)",
+            color: "rgba(var(--fg-rgb),0.38)",
             lineHeight: 1.7,
             marginBottom: 20,
           }}
@@ -48,12 +48,12 @@ export function Footer() {
               style={{
                 fontFamily: "'Heebo', sans-serif",
                 fontSize: "0.82rem",
-                color: "rgba(240,230,211,0.4)",
+                color: "rgba(var(--fg-rgb),0.4)",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
-              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "#d4a017")}
-              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(240,230,211,0.4)")}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.color = "var(--primary)")}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.color = "rgba(var(--fg-rgb),0.4)")}
             >
               {link}
             </a>
@@ -64,7 +64,7 @@ export function Footer() {
           style={{
             fontFamily: "'Heebo', sans-serif",
             fontSize: "0.78rem",
-            color: "rgba(240,230,211,0.22)",
+            color: "rgba(var(--fg-rgb),0.22)",
           }}
         >
           © 2024 VIAJO. כל הזכויות שמורות. מיוצר באהבה בישראל 🇮🇱

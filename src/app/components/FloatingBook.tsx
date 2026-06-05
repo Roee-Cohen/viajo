@@ -21,16 +21,16 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
         }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* Main front cover */}
+        {/* Main front cover — uses palette-primary and palette-dark tones */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(145deg, #e8bc28 0%, #c8980c 30%, #8a5e08 68%, #c8980c 100%)",
+              "linear-gradient(145deg, #c87830 0%, #995f2f 30%, #622b14 68%, #995f2f 100%)",
             borderRadius: "2px 9px 9px 2px",
             boxShadow:
-              "6px 6px 28px rgba(0,0,0,0.65), inset -5px 0 18px rgba(0,0,0,0.18), 0 0 20px rgba(212,160,23,0.18)",
+              "6px 6px 28px rgba(0,0,0,0.65), inset -5px 0 18px rgba(0,0,0,0.18), 0 0 20px rgba(var(--primary-rgb),0.18)",
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
@@ -72,7 +72,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
           {/* Brand name */}
           <div
             style={{
-              color: "#06091a",
+              color: "var(--background)",
               fontSize: size === "lg" ? 24 : 17,
               fontWeight: 800,
               letterSpacing: "4px",
@@ -84,7 +84,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
           </div>
           <div
             style={{
-              color: "rgba(6,9,26,0.55)",
+              color: "rgba(var(--bg-rgb),0.55)",
               fontSize: size === "lg" ? 9 : 7,
               letterSpacing: "2.5px",
               marginTop: 5,
@@ -103,7 +103,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
               left: 22,
               right: 14,
               height: 1,
-              background: "rgba(6,9,26,0.25)",
+              background: "rgba(var(--bg-rgb),0.25)",
             }}
           />
           <div
@@ -113,7 +113,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
               left: 28,
               right: 20,
               height: 0.5,
-              background: "rgba(6,9,26,0.12)",
+              background: "rgba(var(--bg-rgb),0.12)",
             }}
           />
         </div>
@@ -126,7 +126,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
             left: -spineW,
             width: spineW + 2,
             height: "100%",
-            background: "linear-gradient(to right, #4a2e06, #6a4008, #5a3508)",
+            background: "linear-gradient(to right, #3d1a09, #622b14, #4a1f0b)",
             borderRadius: "4px 0 0 4px",
             boxShadow: `-3px 0 10px rgba(0,0,0,0.55)`,
           }}

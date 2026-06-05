@@ -16,7 +16,7 @@ export function FounderSection() {
       dir="rtl"
       className="relative py-24 px-6"
       style={{
-        background: "linear-gradient(180deg, #06091a 0%, #0a102a 100%)",
+        background: "linear-gradient(180deg, var(--background) 0%, rgba(var(--card-rgb),0.5) 100%)",
       }}
     >
       <div className="max-w-5xl mx-auto">
@@ -29,7 +29,7 @@ export function FounderSection() {
         >
           <span
             style={{
-              color: "#d4a017",
+              color: "var(--primary)",
               letterSpacing: "3px",
               fontSize: "11px",
               fontFamily: "'Heebo', sans-serif",
@@ -50,7 +50,7 @@ export function FounderSection() {
             fontFamily: "'Frank Ruhl Libre', serif",
             fontSize: "clamp(1.8rem, 4vw, 2.8rem)",
             fontWeight: 900,
-            color: "#f0e6d3",
+            color: "var(--foreground)",
           }}
         >
           מה שגרם לי ליצור את VIAJO
@@ -89,7 +89,7 @@ export function FounderSection() {
                 style={{
                   position: "absolute",
                   inset: 0,
-                  background: "linear-gradient(to top, rgba(6,9,26,0.7), transparent 60%)",
+                  background: "linear-gradient(to top, rgba(var(--bg-rgb),0.7), transparent 60%)",
                 }}
               />
             </div>
@@ -106,7 +106,7 @@ export function FounderSection() {
                 borderRadius: "10px",
                 overflow: "hidden",
                 boxShadow: "0 12px 40px rgba(0,0,0,0.6)",
-                border: "2px solid rgba(212,160,23,0.4)",
+                border: "2px solid rgba(var(--primary-rgb),0.4)",
               }}
             >
               <img
@@ -123,7 +123,7 @@ export function FounderSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.3 }}
           >
-            <Quote size={36} style={{ color: "#d4a017", marginBottom: "20px" }} />
+            <Quote size={36} style={{ color: "var(--primary)", marginBottom: "20px" }} />
 
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               {[
@@ -136,7 +136,7 @@ export function FounderSection() {
                   style={{
                     fontFamily: "'Heebo', sans-serif",
                     fontSize: "1rem",
-                    color: "rgba(240,230,211,0.78)",
+                    color: "rgba(var(--fg-rgb),0.78)",
                     lineHeight: 1.85,
                   }}
                 >
@@ -150,7 +150,7 @@ export function FounderSection() {
               style={{
                 marginTop: "28px",
                 paddingTop: "20px",
-                borderTop: "1px solid rgba(212,160,23,0.2)",
+                borderTop: "1px solid rgba(var(--primary-rgb),0.2)",
                 display: "flex",
                 alignItems: "center",
                 gap: "14px",
@@ -161,7 +161,7 @@ export function FounderSection() {
                   width: 48,
                   height: 48,
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #d4a017, #8a6010)",
+                  background: "linear-gradient(135deg, var(--primary), var(--primary-dark))",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -177,7 +177,7 @@ export function FounderSection() {
                     fontFamily: "'Frank Ruhl Libre', serif",
                     fontWeight: 700,
                     fontSize: "1.05rem",
-                    color: "#f0e6d3",
+                    color: "var(--foreground)",
                   }}
                 >
                   אמיר לוי
@@ -186,7 +186,7 @@ export function FounderSection() {
                   style={{
                     fontFamily: "'Heebo', sans-serif",
                     fontSize: "0.85rem",
-                    color: "rgba(240,230,211,0.5)",
+                    color: "rgba(var(--fg-rgb),0.5)",
                     marginTop: 2,
                   }}
                 >

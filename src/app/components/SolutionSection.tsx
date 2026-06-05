@@ -23,10 +23,10 @@ export function SolutionSection() {
       dir="rtl"
       className="relative py-24 px-6"
       style={{
-        background: "linear-gradient(180deg, #0a102a 0%, #06091a 40%, #080d22 100%)",
+        background: "linear-gradient(180deg, rgba(var(--card-rgb),0.5) 0%, var(--background) 40%, rgba(var(--card-rgb),0.3) 100%)",
       }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
 
       <div className="max-w-6xl mx-auto">
         {/* Label */}
@@ -36,7 +36,7 @@ export function SolutionSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-4"
         >
-          <span style={{ color: "#d4a017", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
+          <span style={{ color: "var(--primary)", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
             הפתרון
           </span>
         </motion.div>
@@ -46,9 +46,9 @@ export function SolutionSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center mb-4"
-          style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, color: "#f0e6d3" }}
+          style={{ fontFamily: "'Frank Ruhl Libre', serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, color: "var(--foreground)" }}
         >
-          הכירו את <span style={{ color: "#d4a017" }}>VIAJO</span>
+          הכירו את <span style={{ color: "var(--primary)" }}>VIAJO</span>
         </motion.h2>
 
         <motion.p
@@ -56,7 +56,7 @@ export function SolutionSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-16 max-w-xl mx-auto"
-          style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1.05rem", color: "rgba(240,230,211,0.68)", lineHeight: 1.8 }}
+          style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1.05rem", color: "rgba(var(--fg-rgb),0.68)", lineHeight: 1.8 }}
         >
           ספר המסע שמלווה אותך בנסיעה — ושומר את כל הרגעים האמיתיים שלך לנצח.
         </motion.p>
@@ -81,7 +81,7 @@ export function SolutionSection() {
                   transform: "translateX(-50%)",
                   width: 200,
                   height: 40,
-                  background: "radial-gradient(ellipse, rgba(212,160,23,0.3), transparent 70%)",
+                  background: "radial-gradient(ellipse, rgba(var(--primary-rgb),0.3), transparent 70%)",
                   filter: "blur(8px)",
                 }}
               />
@@ -97,8 +97,8 @@ export function SolutionSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
                 style={{
-                  background: "rgba(14,24,48,0.6)",
-                  border: "1px solid rgba(212,160,23,0.15)",
+                  background: "rgba(var(--card-rgb),0.6)",
+                  border: "1px solid rgba(var(--primary-rgb),0.15)",
                   borderRadius: "10px",
                   padding: "20px",
                   display: "flex",
@@ -112,20 +112,20 @@ export function SolutionSection() {
                     width: 40,
                     height: 40,
                     borderRadius: "8px",
-                    background: "rgba(212,160,23,0.12)",
+                    background: "rgba(var(--primary-rgb),0.12)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexShrink: 0,
                   }}
                 >
-                  <f.icon size={20} style={{ color: "#d4a017" }} />
+                  <f.icon size={20} style={{ color: "var(--primary)" }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "#f0e6d3", fontSize: "1rem", marginBottom: 4 }}>
+                  <div style={{ fontFamily: "'Frank Ruhl Libre', serif", fontWeight: 700, color: "var(--foreground)", fontSize: "1rem", marginBottom: 4 }}>
                     {f.title}
                   </div>
-                  <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(240,230,211,0.6)", lineHeight: 1.65 }}>
+                  <div style={{ fontFamily: "'Heebo', sans-serif", fontSize: "0.88rem", color: "rgba(var(--fg-rgb),0.6)", lineHeight: 1.65 }}>
                     {f.text}
                   </div>
                 </div>
@@ -161,7 +161,7 @@ export function SolutionSection() {
                 position: "relative",
                 borderRadius: "10px",
                 overflow: "hidden",
-                border: "1px solid rgba(212,160,23,0.2)",
+                border: "1px solid rgba(var(--primary-rgb),0.2)",
                 aspectRatio: "4/3",
               }}
             >
@@ -176,12 +176,12 @@ export function SolutionSection() {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  background: "linear-gradient(to top, rgba(6,9,26,0.9), transparent)",
+                  background: "linear-gradient(to top, rgba(var(--bg-rgb),0.9), transparent)",
                   padding: "16px 12px 10px",
                   fontFamily: "'Heebo', sans-serif",
                   fontSize: "0.85rem",
                   fontWeight: 600,
-                  color: "#f0e6d3",
+                  color: "var(--foreground)",
                   textAlign: "center",
                 }}
               >
@@ -192,7 +192,7 @@ export function SolutionSection() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
     </section>
   );
 }

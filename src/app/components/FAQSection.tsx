@@ -46,7 +46,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.05 * index, duration: 0.5 }}
       style={{
-        borderBottom: "1px solid rgba(212,160,23,0.15)",
+        borderBottom: "1px solid rgba(var(--primary-rgb),0.15)",
         overflow: "hidden",
       }}
     >
@@ -70,7 +70,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             fontFamily: "'Frank Ruhl Libre', serif",
             fontSize: "1.05rem",
             fontWeight: 700,
-            color: open ? "#d4a017" : "#f0e6d3",
+            color: open ? "var(--primary)" : "var(--foreground)",
             transition: "color 0.2s",
             flex: 1,
           }}
@@ -82,8 +82,8 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             width: 32,
             height: 32,
             borderRadius: "50%",
-            background: open ? "rgba(212,160,23,0.2)" : "rgba(14,24,48,0.8)",
-            border: "1px solid rgba(212,160,23,0.3)",
+            background: open ? "rgba(var(--primary-rgb),0.2)" : "rgba(var(--card-rgb),0.8)",
+            border: "1px solid rgba(var(--primary-rgb),0.3)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -91,7 +91,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
             transition: "background 0.2s",
           }}
         >
-          {open ? <Minus size={14} color="#d4a017" /> : <Plus size={14} color="#d4a017" />}
+          {open ? <Minus size={14} color="var(--primary)" /> : <Plus size={14} color="var(--primary)" />}
         </div>
       </button>
 
@@ -107,7 +107,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
               style={{
                 fontFamily: "'Heebo', sans-serif",
                 fontSize: "0.95rem",
-                color: "rgba(240,230,211,0.68)",
+                color: "rgba(var(--fg-rgb),0.68)",
                 lineHeight: 1.85,
                 paddingBottom: 20,
                 paddingRight: 4,
@@ -132,9 +132,9 @@ export function FAQSection() {
       ref={ref}
       dir="rtl"
       className="relative py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #06091a 0%, #080d22 100%)" }}
+      style={{ background: "linear-gradient(180deg, var(--background) 0%, rgba(var(--card-rgb),0.4) 100%)" }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
 
       <div className="max-w-3xl mx-auto">
         <motion.div
@@ -143,7 +143,7 @@ export function FAQSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <span style={{ color: "#d4a017", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
+          <span style={{ color: "var(--primary)", letterSpacing: "3px", fontSize: "11px", fontFamily: "'Heebo', sans-serif", fontWeight: 600 }}>
             שאלות ותשובות
           </span>
           <h2
@@ -151,7 +151,7 @@ export function FAQSection() {
               fontFamily: "'Frank Ruhl Libre', serif",
               fontSize: "clamp(1.6rem, 3.5vw, 2.6rem)",
               fontWeight: 900,
-              color: "#f0e6d3",
+              color: "var(--foreground)",
               marginTop: 8,
             }}
           >
@@ -164,8 +164,8 @@ export function FAQSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{
-            background: "rgba(14,24,48,0.5)",
-            border: "1px solid rgba(212,160,23,0.15)",
+            background: "rgba(var(--card-rgb),0.5)",
+            border: "1px solid rgba(var(--primary-rgb),0.15)",
             borderRadius: "16px",
             padding: "8px 32px 8px",
             backdropFilter: "blur(10px)",
@@ -184,17 +184,17 @@ export function FAQSection() {
           style={{
             fontFamily: "'Heebo', sans-serif",
             fontSize: "0.95rem",
-            color: "rgba(240,230,211,0.55)",
+            color: "rgba(var(--fg-rgb),0.55)",
           }}
         >
           לא מצאת תשובה?{" "}
-          <a href="mailto:hello@viajo.co.il" style={{ color: "#d4a017", textDecoration: "none" }}>
+          <a href="mailto:hello@viajo.co.il" style={{ color: "var(--primary)", textDecoration: "none" }}>
             שלח לנו הודעה
           </a>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #d4a017, transparent)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, var(--primary), transparent)" }} />
     </section>
   );
 }
