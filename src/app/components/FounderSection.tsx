@@ -133,7 +133,6 @@ export function FounderSection() {
                 " שנים אחרי, כשאני מדבר עם אותם אנשים על אותם רגעים  אני מופתע כל פעם מחדש. הפערים עצומים. הם זוכרים שהיה כיף, שהיה יפה, ש’היה נחמד’. אני זוכר את הריח, את השמות, את מה שהרגשנו בדיוק באותו רגע.",
                 " הבדל אחד: היומן.",
                 " VIAJO נולד מתוך הרצון לתת לכל מטייל את מה שהייתי רוצה שיהיה לי  ואת מה שהייתי רוצה לתת לכם. ספר מסע שלא רק מתעד, אלא בונה מזכרת שתישאר איתכם לכל החיים",
-                <Quote size={36} style={{ color: "var(--primary)", marginBottom: "0px" }} />
               ].map((text, i) => (
                 <p
                   key={i}
@@ -147,6 +146,9 @@ export function FounderSection() {
                   {text}
                 </p>
               ))}
+              <div style={{ display: "flex", justifyContent: "flex-start", direction: "ltr" }}>
+                <Quote size={36} style={{ color: "var(--primary)", marginBottom: "0px" }} />
+              </div>
             </div>
 
             {/* Founder signature */}
