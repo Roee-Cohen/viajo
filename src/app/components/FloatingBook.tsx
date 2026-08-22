@@ -1,169 +1,208 @@
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import type { Easing } from "motion/react";
+import coverFront from "../../assets/book/cover-front.webp";
+import coverBack from "../../assets/book/cover-back.webp";
+import foreEdgeTex from "../../assets/book/fore-edge.webp";
 
 interface FloatingBookProps {
   size?: "sm" | "md" | "lg";
 }
 
+/* Cover proportions and thickness measured off the product photos
+   (assets/book/*.jpg), perspective-rectified into the textures above. */
+const COVER_RATIO = 474 / 720; // width / height
+const DEPTH_RATIO = 0.07;      // spine thickness / height
+const HEIGHTS = { sm: 140, md: 186, lg: 232 };
+
+/* One rotation cycle: rest on the front cover, turn to the back, rest, turn home.
+   Every animated track below shares these times so the shading and the ground
+   shadow stay locked to the angle of the book. */
+const TIMES = [0, 0.12, 0.29, 0.46, 0.58, 0.79, 1];
+const EASE: Easing[] = ["linear", "easeIn", "easeOut", "linear", "easeIn", "easeOut"];
+const CYCLE = { duration: 18, times: TIMES, ease: EASE, repeat: Infinity };
+
+const SPIN = [20, 20, 110, 200, 200, 290, 380];   // 380 lands back on 20
+const TILT = [8, 8, 11, 8, 8, 11, 8];             // leans into each turn
+const BOB = [0, 0, -16, 0, 0, -16, 0];            // lifts mid-turn, settles at rest
+const FRONT_SHADE = [0.06, 0.06, 0.5, 0.42, 0.42, 0.5, 0.06];
+const BACK_SHADE = [0.42, 0.42, 0.5, 0.06, 0.06, 0.5, 0.42];
+const SHADOW_SQUASH = [1, 1, 0.42, 1, 1, 0.42, 1];
+const SHADOW_FADE = [0.5, 0.5, 0.26, 0.5, 0.5, 0.26, 0.5];
+
+const PAPER_LIGHT = "#efe7d6";
+const PAPER_MID = "#ddd1b8";
+const PAPER_DARK = "#b3a68d";
+
+/* Stacked page edges seen head-on, plus the darker cover board top and bottom. */
+const PAGE_STACK =
+  `linear-gradient(to bottom, ${PAPER_DARK} 0 7%, rgba(0,0,0,0) 7% 93%, ${PAPER_DARK} 93% 100%),` +
+  `repeating-linear-gradient(to bottom, ${PAPER_LIGHT} 0 1.1px, ${PAPER_MID} 1.1px 2.2px)`;
+
 export function FloatingBook({ size = "lg" }: FloatingBookProps) {
-  const dims = { sm: [100, 130], md: [130, 168], lg: [160, 208] }[size];
-  const w = dims[0], h = dims[1];
-  const spineW = Math.round(w * 0.12);
-  const pagesW = Math.round(w * 0.06);
+  const reduced = useReducedMotion();
+
+  const h = HEIGHTS[size];
+  const w = Math.round(h * COVER_RATIO);
+  const t = Math.round(h * DEPTH_RATIO);
+
+  const face: React.CSSProperties = {
+    position: "absolute",
+    inset: 0,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backfaceVisibility: "hidden",
+    boxShadow: "0 14px 34px rgba(0,0,0,0.5)",
+  };
+
+  /* The edge faces are as thick as the book, and sit a half pixel inside the
+     covers while overhanging them by the same amount, so the seams between
+     faces never round apart and let the background show through. */
+  const sideFace: React.CSSProperties = {
+    position: "absolute",
+    top: -0.5,
+    left: (w - t) / 2 - 0.5,
+    width: t + 1,
+    height: h + 1,
+  };
+
+  const capFace: React.CSSProperties = {
+    position: "absolute",
+    left: -0.5,
+    top: (h - t) / 2 - 0.5,
+    width: w + 1,
+    height: t + 1,
+    background: PAGE_STACK,
+  };
 
   return (
-    <div style={{ perspective: 1400, display: "inline-block" }}>
+    <div
+      role="img"
+      aria-label="ספר המסע Viajo"
+      style={{
+        position: "relative",
+        display: "inline-block",
+        perspective: h * 6,
+      }}
+    >
       <motion.div
-        style={{ width: w, height: h, position: "relative" }}
-        animate={{
-          rotateY: [20, 26, 20],
-          rotateX: [6, 10, 6],
-          y: [0, -18, 0],
+        style={{
+          width: w,
+          height: h,
+          position: "relative",
+          transformStyle: "preserve-3d",
         }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+        animate={
+          reduced
+            ? { rotateY: 20, rotateX: 8, y: 0 }
+            : { rotateY: SPIN, rotateX: TILT, y: BOB }
+        }
+        transition={reduced ? { duration: 0 } : CYCLE}
       >
-        {/* Main front cover — uses palette-primary and palette-dark tones */}
+        {/* Front cover — spine edge on the right, as the book is bound right-to-left */}
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(145deg, #9dc08b 0%, #609966 30%, #40513b 68%, #609966 100%)",
-            borderRadius: "2px 9px 9px 2px",
-            boxShadow:
-              "6px 6px 28px rgba(0,0,0,0.65), inset -5px 0 18px rgba(0,0,0,0.18), 0 0 20px rgba(var(--primary-rgb),0.18)",
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "14px 14px 14px 22px",
+            ...face,
+            backgroundImage: `url(${coverFront})`,
+            borderRadius: "4px 1px 1px 4px",
+            transform: `translateZ(${t / 2}px)`,
           }}
         >
-          {/* Decorative outer border */}
+          {/* Sheen off the protective wrap */}
           <div
             style={{
               position: "absolute",
-              inset: "10px 10px 10px 18px",
-              border: "1px solid rgba(255,255,255,0.2)",
-              borderRadius: "1px 5px 5px 1px",
+              inset: 0,
+              borderRadius: "inherit",
+              background:
+                "linear-gradient(115deg, rgba(255,255,255,0) 28%, rgba(255,255,255,0.16) 44%, rgba(255,255,255,0) 62%)",
+              pointerEvents: "none",
             }}
           />
-          {/* Corner ornaments */}
-          {["top-[14px] left-[22px]", "top-[14px] right-[14px]", "bottom-[14px] left-[22px]", "bottom-[14px] right-[14px]"].map(
-            (pos, i) => (
-              <div
-                key={i}
-                className={`absolute ${pos} w-2 h-2`}
-                style={{
-                  borderTop: i < 2 ? "1.5px solid rgba(255,255,255,0.35)" : "none",
-                  borderBottom: i >= 2 ? "1.5px solid rgba(255,255,255,0.35)" : "none",
-                  borderLeft: i % 2 === 0 ? "1.5px solid rgba(255,255,255,0.35)" : "none",
-                  borderRight: i % 2 === 1 ? "1.5px solid rgba(255,255,255,0.35)" : "none",
-                }}
-              />
-            )
-          )}
-
-          {/* Globe icon */}
-          <div style={{ fontSize: size === "lg" ? 40 : 28, marginBottom: 8, filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))" }}>
-            🌍
-          </div>
-
-          {/* Brand name */}
-          <div
-            style={{
-              color: "var(--background)",
-              fontSize: size === "lg" ? 24 : 17,
-              fontWeight: 800,
-              letterSpacing: "4px",
-              fontFamily: "'Frank Ruhl Libre', serif",
-              textShadow: "0 1px 2px rgba(255,255,255,0.3)",
-            }}
-          >
-            VIAJO
-          </div>
-          <div
-            style={{
-              color: "rgba(var(--bg-rgb),0.55)",
-              fontSize: size === "lg" ? 9 : 7,
-              letterSpacing: "2.5px",
-              marginTop: 5,
-              fontFamily: "'Heebo', sans-serif",
-              textTransform: "uppercase",
-            }}
-          >
-            My Journey
-          </div>
-
-          {/* Bottom decorative lines */}
-          <div
+          <motion.div
             style={{
               position: "absolute",
-              bottom: 22,
-              left: 22,
-              right: 14,
-              height: 1,
-              background: "rgba(var(--bg-rgb),0.25)",
+              inset: 0,
+              borderRadius: "inherit",
+              background:
+                "linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 48%, rgba(0,0,0,0.62) 100%)",
+              pointerEvents: "none",
             }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              bottom: 26,
-              left: 28,
-              right: 20,
-              height: 0.5,
-              background: "rgba(var(--bg-rgb),0.12)",
-            }}
+            animate={reduced ? { opacity: 0.06 } : { opacity: FRONT_SHADE }}
+            transition={reduced ? { duration: 0 } : CYCLE}
           />
         </div>
 
-        {/* Spine */}
+        {/* Back cover — its own spine edge sits on the left, so it lines up once flipped */}
         <div
           style={{
-            position: "absolute",
-            top: 0,
-            left: -spineW,
-            width: spineW + 2,
-            height: "100%",
-            background: "linear-gradient(to right, #2a3426, #40513b, #334530)",
-            borderRadius: "4px 0 0 4px",
-            boxShadow: `-3px 0 10px rgba(0,0,0,0.55)`,
+            ...face,
+            backgroundImage: `url(${coverBack})`,
+            borderRadius: "1px 4px 4px 1px",
+            transform: `rotateY(180deg) translateZ(${t / 2}px)`,
+          }}
+        >
+          <motion.div
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "inherit",
+              background:
+                "linear-gradient(105deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 48%, rgba(0,0,0,0.62) 100%)",
+              pointerEvents: "none",
+            }}
+            animate={reduced ? { opacity: 0.42 } : { opacity: BACK_SHADE }}
+            transition={reduced ? { duration: 0 } : CYCLE}
+          />
+        </div>
+
+        {/* Fore-edge — photographed page block */}
+        <div
+          style={{
+            ...sideFace,
+            backgroundImage: `url(${foreEdgeTex})`,
+            backgroundSize: "100% 100%",
+            transform: `rotateY(-90deg) translateZ(${(w - 1) / 2}px)`,
           }}
         />
 
-        {/* Pages (right edge) */}
+        {/* Spine — the wrapped fold, shaded as a rounded surface between the covers */}
         <div
           style={{
-            position: "absolute",
-            top: 3,
-            right: -(pagesW + 2),
-            width: pagesW + 2,
-            height: "calc(100% - 6px)",
+            ...sideFace,
             background:
-              "repeating-linear-gradient(to bottom, #f0e8d4, #f0e8d4 1.5px, #d8cdb2 1.5px, #d8cdb2 3px)",
-            borderRadius: "0 3px 3px 0",
-            boxShadow: "2px 0 5px rgba(0,0,0,0.3)",
+              `linear-gradient(to right, #94876f 0%, ${PAPER_MID} 22%, ${PAPER_LIGHT} 48%,` +
+              ` ${PAPER_MID} 74%, #8d8069 100%)`,
+            transform: `rotateY(90deg) translateZ(${(w - 1) / 2}px)`,
           }}
         />
 
-        {/* Shadow on ground */}
-        <motion.div
-          style={{
-            position: "absolute",
-            bottom: -38,
-            left: "5%",
-            width: "90%",
-            height: 22,
-            background:
-              "radial-gradient(ellipse, rgba(0,0,0,0.45) 0%, transparent 70%)",
-            borderRadius: "50%",
-            filter: "blur(5px)",
-          }}
-          animate={{ scaleX: [1, 0.82, 1], opacity: [0.45, 0.25, 0.45] }}
-          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Head and tail */}
+        <div style={{ ...capFace, transform: `rotateX(90deg) translateZ(${(h - 1) / 2}px)` }} />
+        <div style={{ ...capFace, transform: `rotateX(-90deg) translateZ(${(h - 1) / 2}px)` }} />
       </motion.div>
+
+      {/* Contact shadow — narrows as the book turns edge-on */}
+      <motion.div
+        style={{
+          position: "absolute",
+          left: "50%",
+          x: "-50%",
+          bottom: -Math.round(h * 0.11),
+          width: Math.round(w * 1.15),
+          height: Math.round(h * 0.08),
+          background:
+            "radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.28) 45%, rgba(0,0,0,0) 72%)",
+          borderRadius: "50%",
+          filter: "blur(5px)",
+          pointerEvents: "none",
+        }}
+        animate={
+          reduced
+            ? { scaleX: 1, opacity: 0.45 }
+            : { scaleX: SHADOW_SQUASH, opacity: SHADOW_FADE }
+        }
+        transition={reduced ? { duration: 0 } : CYCLE}
+      />
     </div>
   );
 }
