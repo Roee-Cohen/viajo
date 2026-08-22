@@ -58,7 +58,7 @@ export function SolutionSection() {
           className="text-center mb-16 max-w-xl mx-auto"
           style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1.05rem", color: "rgba(var(--fg-rgb),0.68)", lineHeight: 1.8 }}
         >
-          ספר המסע שמלווה אותך בנסיעה — ושומר את כל הרגעים האמיתיים שלך לנצח.
+          ספר המסע שמלווה אותך בנסיעה — ושומר את כל הרגעים האמיתיים שלך לנצח
         </motion.p>
 
         {/* Book showcase */}

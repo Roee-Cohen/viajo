@@ -146,7 +146,7 @@ export function FounderSection() {
                   {text}
                 </p>
               ))}
-              <div style={{ display: "flex", justifyContent: "flex-start", direction: "ltr" }}>
+              <div style={{ textAlign: "left" }}>
                 <Quote size={36} style={{ color: "var(--primary)", marginBottom: "0px" }} />
               </div>
             </div>
@@ -186,7 +186,7 @@ export function FounderSection() {
                     color: "var(--foreground)",
                   }}
                 >
-                  אמיר לוי
+                  עידן שפירא
                 </div>
                 <div
                   style={{
