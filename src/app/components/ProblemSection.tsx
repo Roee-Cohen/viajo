@@ -5,7 +5,7 @@ import { Brain, Camera, Clock, AlertTriangle } from "lucide-react";
 const STATS = [
   { icon: Brain, value: "90%", label: "מהרגעים הכי קטנים נשכחים תוך שנה" },
   { icon: Camera, value: "2,400", label: "תמונות ממוצעות לנסיעה — ורוב הסיפור הולך לאיבוד" },
-  { icon: Clock, value: "3 שנים", label: "ולא תזכור את שם הכפר שבו שינת בגוואטמלה" },
+  { icon: Clock, value: "3 שנים", label: "ולא תזכור את שם הכפר שבו ישינת בגוואטמלה" },
 ];
 
 export function ProblemSection() {
@@ -61,7 +61,7 @@ export function ProblemSection() {
             lineHeight: 1.3,
           }}
         >
-          אתה מתכנן נסיעה של חיים.
+         אתה מתכנן נסיעה של החיים
           <br />
           <span style={{ color: "var(--primary)" }}>מה יישאר ממנה בעוד 10 שנים?</span>
         </motion.h2>
@@ -158,7 +158,7 @@ export function ProblemSection() {
                   marginBottom: "12px",
                 }}
               >
-                הסצנריו שקורה לכל מטייל
+                מה שקורה לכל מטייל
               </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                 {[

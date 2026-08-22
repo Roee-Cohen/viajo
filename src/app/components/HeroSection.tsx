@@ -99,7 +99,7 @@ export function HeroSection() {
               fontWeight: 600,
             }}
           >
-            VIAJO — שמור את הנסיעה שלך
+            VIAJO — המתנה המושלמת לטיול שלך
           </span>
           <div className="w-8 h-px" style={{ background: "linear-gradient(to right, var(--primary), transparent)" }} />
         </motion.div>
@@ -121,7 +121,7 @@ export function HeroSection() {
         >
           הרגעים הכי יפים שלך
           <br />
-          <span style={{ color: "var(--primary)" }}>עוד לא נשמרו לנצח</span>
+          <span style={{ color: "var(--primary)" }}>שווים מזכרת שתישאר לנצח</span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -137,10 +137,8 @@ export function HeroSection() {
             maxWidth: "560px",
             margin: "0 auto 2.5rem",
           }}
-        >
-          כל מטייל ארוך-טווח יודע את זה — אתה חוזר עם אלף תמונות,
-          אבל הסיפור האמיתי? הוא כבר מתחיל להישכח.
-          VIAJO יעזור לך לשמור אותו לנצח.
+        >כל מטייל יודע , אתה חוזר עם צליון תמונות לארץ אבל הסיפור האמיתי? הוא כבר מתחיל להישכח... 
+        VIAJO יעזור לך לשמור אותו לנצח
         </motion.p>
 
         {/* CTA Buttons */}
@@ -175,7 +173,7 @@ export function HeroSection() {
               (e.target as HTMLElement).style.boxShadow = "0 4px 20px rgba(var(--primary-rgb),0.35)";
             }}
           >
-            בנה את הספר שלך עכשיו
+            קנה את הספר שלך עכשיו
           </a>
           <a
             href="#problem"
