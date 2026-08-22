@@ -6,6 +6,9 @@ import foreEdgeTex from "../../assets/book/fore-edge.webp";
 
 interface FloatingBookProps {
   size?: "sm" | "md" | "lg";
+  /* Seconds into the cycle to start at — lets two books shown side by side
+     turn out of phase instead of as mirrored duplicates. */
+  delay?: number;
 }
 
 /* Cover proportions and thickness measured off the product photos
@@ -38,8 +41,9 @@ const PAGE_STACK =
   `linear-gradient(to bottom, ${PAPER_DARK} 0 7%, rgba(0,0,0,0) 7% 93%, ${PAPER_DARK} 93% 100%),` +
   `repeating-linear-gradient(to bottom, ${PAPER_LIGHT} 0 1.1px, ${PAPER_MID} 1.1px 2.2px)`;
 
-export function FloatingBook({ size = "lg" }: FloatingBookProps) {
+export function FloatingBook({ size = "lg", delay = 0 }: FloatingBookProps) {
   const reduced = useReducedMotion();
+  const cycle = delay ? { ...CYCLE, delay: -delay } : CYCLE;
 
   const h = HEIGHTS[size];
   const w = Math.round(h * COVER_RATIO);
@@ -96,7 +100,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
             ? { rotateY: 20, rotateX: 8, y: 0 }
             : { rotateY: SPIN, rotateX: TILT, y: BOB }
         }
-        transition={reduced ? { duration: 0 } : CYCLE}
+        transition={reduced ? { duration: 0 } : cycle}
       >
         {/* Front cover — spine edge on the right, as the book is bound right-to-left */}
         <div
@@ -128,7 +132,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
               pointerEvents: "none",
             }}
             animate={reduced ? { opacity: 0.06 } : { opacity: FRONT_SHADE }}
-            transition={reduced ? { duration: 0 } : CYCLE}
+            transition={reduced ? { duration: 0 } : cycle}
           />
         </div>
 
@@ -151,7 +155,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
               pointerEvents: "none",
             }}
             animate={reduced ? { opacity: 0.42 } : { opacity: BACK_SHADE }}
-            transition={reduced ? { duration: 0 } : CYCLE}
+            transition={reduced ? { duration: 0 } : cycle}
           />
         </div>
 
@@ -201,7 +205,7 @@ export function FloatingBook({ size = "lg" }: FloatingBookProps) {
             ? { scaleX: 1, opacity: 0.45 }
             : { scaleX: SHADOW_SQUASH, opacity: SHADOW_FADE }
         }
-        transition={reduced ? { duration: 0 } : CYCLE}
+        transition={reduced ? { duration: 0 } : cycle}
       />
     </div>
   );

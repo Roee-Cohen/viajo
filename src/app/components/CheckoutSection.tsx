@@ -168,8 +168,15 @@ export function CheckoutSection() {
                     )}
 
                     {/* Plan icon */}
-                    <div className="flex justify-center mb-4">
-                      <FloatingBook size="sm" />
+                    <div className="flex justify-center items-end gap-2 mb-4">
+                      {p.id === "ultimate" ? (
+                        <>
+                          <FloatingBook size="sm" delay={0} />
+                          <FloatingBook size="sm" delay={9} />
+                        </>
+                      ) : (
+                        <FloatingBook size="sm" />
+                      )}
                     </div>
 
                     <h3
