@@ -300,7 +300,7 @@ export function TestimonialsSection() {
           {[
             { emoji: "⭐", label: "דירוג ממוצע 4.9", sub: "מ-300+ ביקורות" },
             { emoji: "🌍", label: "נשלח ל-40+ מדינות", sub: "ברחבי העולם" },
-            { emoji: "✈", label: "5,000+ מטיילים", sub: "בחרו VIAJO" },
+            { emoji: "✈", label: "1000+ מטיילים", sub: "בחרו VIAJO" },
           ].map((b, i) => (
             <div key={i} className="flex items-center gap-3" style={{ color: "rgba(var(--fg-rgb),0.65)" }}>
               <span style={{ fontSize: "1.5rem" }}>{b.emoji}</span>

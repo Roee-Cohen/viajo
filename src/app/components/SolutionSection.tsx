@@ -4,11 +4,9 @@ import { FloatingBook } from "./FloatingBook";
 import { BookOpen, MapPin, Image, Pencil, Package, Star } from "lucide-react";
 
 const FEATURES = [
-  { icon: BookOpen, title: "ספר מותאם אישית", text: "כל ספר VIAJO מעוצב סביב הנסיעה שלך — המסלול, התאריכים, המקומות." },
-  { icon: MapPin, title: "מפות ומסלולים", text: "מפות מדינות ויבשות שעברת בהן, עם שטח לסמן ולצייר את הדרך שלך." },
-  { icon: Image, title: "עמודי זיכרון", text: "עמודים מיוחדים לתמונות, כרטיסים, מנות, אנשים — כל מה שרצית לזכור." },
-  { icon: Pencil, title: "רשומות יומניות", text: "שטח כתיבה מובנה לכל יום בנסיעה — עם שאלות מנחות שיוציאו ממך את הסיפור." },
-  { icon: Package, title: "חבילת מוצרים", text: "ניתן להוסיף מדבקות מיקום, עטים מיוחדים, ומדריך למטייל הנינג'ה." },
+ 
+  { icon: Image, title: "עמודי זיכרון", text: "עמודים מיוחדים עם תמונות, שאלות, תהליך, אנשים  כל מה שרצית לזכור." },
+  { icon: Pencil, title: "רשומות יומניות", text: "שטח כתיבה מובנה לכל יום בנסיעה  עם שאלות מנחות שיוציאו ממך את הסיפור." },
   { icon: Star, title: "איכות פרמיום", text: "כריכה קשה, נייר 120 גרם, הדפסה מקצועית — ספר שיחזיק 100 שנה." },
 ];
 
@@ -144,7 +142,7 @@ export function SolutionSection() {
           {[
             {
               src: "https://images.unsplash.com/photo-1748016276313-7f9b25de7376?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
-              label: "עמודי הרשומות"
+              label: "עמודי רשומות"
             },
             {
               src: "https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
@@ -152,7 +150,7 @@ export function SolutionSection() {
             },
             {
               src: "https://images.unsplash.com/photo-1501868984184-76121ed6a6e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600",
-              label: "מפות מסלול"
+              label:"מפת העולם"
             },
           ].map((img, i) => (
             <div

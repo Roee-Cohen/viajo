@@ -111,7 +111,7 @@ export function CheckoutSection() {
             בחר את ה-VIAJO שלך
           </h2>
           <p style={{ fontFamily: "'Heebo', sans-serif", fontSize: "1rem", color: "rgba(var(--fg-rgb),0.6)", marginTop: 8 }}>
-            משלוח חינם לכל ישראל • אחריות 30 יום • תשלום מאובטח
+            משלוח חינם לכל ישראל בקנייה מעל 200 ש"ח • אחריות 30 יום • תשלום מאובטח
           </p>
         </motion.div>
 
